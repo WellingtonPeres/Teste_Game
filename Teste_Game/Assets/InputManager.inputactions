@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Catch",
+                    "name": "CollectEnemies",
                     "type": "Button",
                     "id": "23a331cc-eeba-4de0-b4b6-553c74e95cdf",
                     "expectedControlType": "Button",
@@ -103,7 +103,7 @@
                 {
                     "name": "",
                     "id": "41d5c4d0-f840-4f5a-a651-40d56d6e1da8",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -125,11 +125,11 @@
                 {
                     "name": "",
                     "id": "83301e45-c33e-4976-a9a0-f811beab46b8",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Catch",
+                    "action": "CollectEnemies",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -140,7 +140,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Catch",
+                    "action": "CollectEnemies",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

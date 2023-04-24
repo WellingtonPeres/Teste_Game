@@ -46,7 +46,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Catch"",
+                    ""name"": ""CollectEnemies"",
                     ""type"": ""Button"",
                     ""id"": ""23a331cc-eeba-4de0-b4b6-553c74e95cdf"",
                     ""expectedControlType"": ""Button"",
@@ -125,7 +125,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""41d5c4d0-f840-4f5a-a651-40d56d6e1da8"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -147,11 +147,11 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""83301e45-c33e-4976-a9a0-f811beab46b8"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Catch"",
+                    ""action"": ""CollectEnemies"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -162,7 +162,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Catch"",
+                    ""action"": ""CollectEnemies"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -175,7 +175,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
-        m_Player_Catch = m_Player.FindAction("Catch", throwIfNotFound: true);
+        m_Player_CollectEnemies = m_Player.FindAction("CollectEnemies", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -237,14 +237,14 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Punch;
-    private readonly InputAction m_Player_Catch;
+    private readonly InputAction m_Player_CollectEnemies;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
         public PlayerActions(@InputManager wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
-        public InputAction @Catch => m_Wrapper.m_Player_Catch;
+        public InputAction @CollectEnemies => m_Wrapper.m_Player_CollectEnemies;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -260,9 +260,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Punch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
-                @Catch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCatch;
-                @Catch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCatch;
-                @Catch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCatch;
+                @CollectEnemies.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollectEnemies;
+                @CollectEnemies.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollectEnemies;
+                @CollectEnemies.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCollectEnemies;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -273,9 +273,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
-                @Catch.started += instance.OnCatch;
-                @Catch.performed += instance.OnCatch;
-                @Catch.canceled += instance.OnCatch;
+                @CollectEnemies.started += instance.OnCollectEnemies;
+                @CollectEnemies.performed += instance.OnCollectEnemies;
+                @CollectEnemies.canceled += instance.OnCollectEnemies;
             }
         }
     }
@@ -284,6 +284,6 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
-        void OnCatch(InputAction.CallbackContext context);
+        void OnCollectEnemies(InputAction.CallbackContext context);
     }
 }
