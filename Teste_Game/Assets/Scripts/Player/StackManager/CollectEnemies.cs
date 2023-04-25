@@ -63,7 +63,7 @@ public class CollectEnemies : MonoBehaviour
 
     private void CriateNewObjectInListStack()
     {
-        float distanceCubes = 0.4f;
+        float distanceCubes = 1.4f;
         var referenceListStackEnemies = Stack.instance.GetStackEnemies();
 
         GameObject newCube = Instantiate(
